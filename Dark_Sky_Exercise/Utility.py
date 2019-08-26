@@ -23,7 +23,7 @@ def print_as_csv(out_file, cities, col_names):
     #Write out city weather data in csv format
     for city in cities:
         
-        csv_str = "\"" + city.get_city_ref() + "\"" + d + str(city.get_lat()) + d + str(city.get_lon()) + d
+        csv_str = "\"" + city.get_city_ref() + "\"" + d 
 
         five_day_minmax = city.get_5d_minmax()
 

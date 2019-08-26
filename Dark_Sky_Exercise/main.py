@@ -6,7 +6,7 @@ sys.path.insert( 1, "C:/Users/prest/Desktop/IAA_PY/Dark_Sky_Exercise" )
 from forecastiopy import ForecastIO
 from forecastiopy import FIODaily
 import City as c
-import CSV_Util as csv
+import Utility as util
 
 
 ### Hard coded input ###
@@ -34,8 +34,6 @@ cities.append(c.City( "Oldham, United Kingdom", 53.5409, -2.1114))
 
 col_names = []
 col_names.append("City")
-col_names.append("lat")
-col_names.append("lon")
 col_names.append("Min_1")
 col_names.append("Max_1")
 col_names.append("Min_2")
@@ -57,7 +55,7 @@ col_names.append("Max_max")
 for i in range(len(cities)):
 
     fio = ForecastIO.ForecastIO(key, latitude = cities[i].get_lat(), 
-                                longitude = cities[i].get_lon())
+                                longitude = cities[i].get_lon(), units= 'si' )
     
 
     daily = FIODaily.FIODaily( fio )
@@ -69,8 +67,11 @@ for i in range(len(cities)):
                               str(val[ "temperatureMax" ]))
 
 
+
+
+
 #Write to CSV
-csv.print_as_csv(out_file_name, cities, col_names)
+util.print_as_csv(out_file_name, cities, col_names)
 
 
 print("Dark Sky data was successfully recieved and processed into an appropriate CSV output.")
